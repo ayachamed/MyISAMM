@@ -16,14 +16,9 @@ if (localPropertiesFile.exists()) {
 }
 
 // Determine Google Maps API Key
-val mapsApiKey = properties.getProperty("GOOGLE_MAPS_API_KEY")
-val resolvedMapsKey = if (mapsApiKey == null && !gradle.startParameter.taskNames.any {
-        it.contains("lint", ignoreCase = true) || it.contains("assemble", ignoreCase = true)
-    }) {
+val mapsApiKey = properties.getProperty("GOOGLE_MAPS_API_KEY", "DEFAULT_API_KEY_PLACEHOLDER")
+if (mapsApiKey == "DEFAULT_API_KEY_PLACEHOLDER") {
     println("Warning: GOOGLE_MAPS_API_KEY not found. Maps may fail.")
-    "DEFAULT_API_KEY_PLACEHOLDER_APP_WILL_PROBABLY_CRASH_OR_MAPS_WONT_WORK"
-} else {
-    mapsApiKey ?: "DEFAULT_API_KEY_PLACEHOLDER_APP_WILL_PROBABLY_CRASH_OR_MAPS_WONT_WORK"
 }
 
 android {
@@ -38,7 +33,7 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders["googleMapsApiKey"] = resolvedMapsKey
+        manifestPlaceholders["googleMapsApiKey"] = mapsApiKey
     }
 
     buildTypes {
@@ -63,6 +58,7 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation("com.google.code.gson:gson:2.10.1")
 
     // Navigation (non-KTX for Java projects)
     implementation(libs.navigation.fragment)

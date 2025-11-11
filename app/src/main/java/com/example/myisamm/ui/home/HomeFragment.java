@@ -17,9 +17,17 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.myisamm.R;
-import com.example.myisamm.ViewPager2Utils;
+import com.example.myisamm.model.Club;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -30,24 +38,13 @@ public class HomeFragment extends Fragment {
 
     private Handler autoScrollHandler = new Handler();
     private int currentPage = 0;
-
-    private int[] clubImages = {
-            R.drawable.club,
-            R.drawable.club1,
-            R.drawable.club2,
-            R.drawable.club3,
-            R.drawable.club4,
-            R.drawable.club5,
-            R.drawable.club6,
-            R.drawable.club7,
-            R.drawable.club8
-    };
+    private List<Club> clubList;
 
     private final Runnable autoScrollRunnable = new Runnable() {
         @Override
         public void run() {
-            if (clubsViewPager != null && clubImages.length > 0) {
-                currentPage = (currentPage + 1) % clubImages.length;
+            if (clubsViewPager != null && clubList != null && !clubList.isEmpty()) {
+                currentPage = (currentPage + 1) % clubList.size();
                 clubsViewPager.setCurrentItem(currentPage, true);
                 autoScrollHandler.postDelayed(this, 3000); // Scroll every 3 seconds
             }
@@ -66,9 +63,12 @@ public class HomeFragment extends Fragment {
         welcomeTextView = view.findViewById(R.id.home_welcome_text);
         fetchUsername();
 
+        // Load clubs from JSON
+        clubList = loadClubsJson();
+
         // Setup ViewPager2 for clubs
         clubsViewPager = view.findViewById(R.id.home_clubs_viewpager);
-        ClubAdapter clubAdapter = new ClubAdapter(clubImages, getContext());
+        ClubAdapter clubAdapter = new ClubAdapter(clubList, getContext());
         clubsViewPager.setAdapter(clubAdapter);
 
 
@@ -88,10 +88,20 @@ public class HomeFragment extends Fragment {
         });
 
 
-        ViewPager2Utils.reduceDragSensitivity(clubsViewPager);
-        ViewPager2Utils.setSmoothScrollDuration(clubsViewPager, 500);
-
         return view;
+    }
+
+    private List<Club> loadClubsJson() {
+        try {
+            InputStream is = getContext().getAssets().open("clubs.json");
+            InputStreamReader reader = new InputStreamReader(is);
+            Type listType = new TypeToken<ArrayList<Club>>() {
+            }.getType();
+            return new Gson().fromJson(reader, listType);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     private void fetchUsername() {

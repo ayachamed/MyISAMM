@@ -72,30 +72,27 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupWithNavController(bottomNavView, navController);
 
 
-            navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-                @Override
-                public void onDestinationChanged(@NonNull NavController controller,
-                                                 @NonNull NavDestination destination,
-                                                 @Nullable Bundle arguments) {
+            navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+                if (toolbarTitle == null) {
+                    return;
+                }
 
-                    if (toolbarTitle != null && destination.getLabel() != null) {
+                CharSequence title = destination.getLabel();
 
-                        if (arguments != null && destination.getLabel().toString().contains("{title}")) {
-                            String dynamicTitle = arguments.getString("title");
-                            if (dynamicTitle != null) {
-                                toolbarTitle.setText(dynamicTitle);
-                            } else {
-                                toolbarTitle.setText(destination.getLabel());
-                            }
-                        } else {
-                            toolbarTitle.setText(destination.getLabel());
-                        }
-                    } else if (toolbarTitle != null) {
-                        // Fallback if no label
-                        toolbarTitle.setText("MyISAMM");
+                // Check for dynamic title in arguments
+                if (title != null && title.toString().contains("{title}") && arguments != null) {
+                    String dynamicTitle = arguments.getString("title");
+                    if (dynamicTitle != null) {
+                        toolbarTitle.setText(dynamicTitle);
+                        return; // Title set, we're done
                     }
+                }
 
-
+                // Use label if it exists, otherwise use a fallback
+                if (title != null && !title.toString().isEmpty()) {
+                    toolbarTitle.setText(title);
+                } else {
+                    toolbarTitle.setText(R.string.app_name); // Fallback to app name
                 }
             });
 

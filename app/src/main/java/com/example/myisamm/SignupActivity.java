@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText usernameInput, emailInput;
     private TextInputEditText passwordInput, confirmPasswordInput;
     private Button signupButton;
+    private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private TextInputLayout passwordLayout, confirmPasswordLayout;
@@ -39,6 +41,7 @@ public class SignupActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.signup_password_input);
         confirmPasswordInput = findViewById(R.id.signup_confirm_password_input);
         signupButton = findViewById(R.id.signup_button);
+        progressBar = findViewById(R.id.signup_progress_bar);
 
 
         passwordLayout = findViewById(R.id.signup_password_layout);
@@ -75,6 +78,10 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
 
+            // Show progress bar
+            progressBar.setVisibility(View.VISIBLE);
+            signupButton.setEnabled(false);
+
             // Create user with Firebase Auth
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
@@ -90,15 +97,27 @@ public class SignupActivity extends AppCompatActivity {
                                     .document(userId)
                                     .set(user)
                                     .addOnSuccessListener(aVoid -> {
+                                        progressBar.setVisibility(View.GONE);
+                                        signupButton.setEnabled(true);
                                         Toast.makeText(SignupActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                                         finish();
                                     })
                                     .addOnFailureListener(e -> {
+                                        progressBar.setVisibility(View.GONE);
+                                        signupButton.setEnabled(true);
                                         Toast.makeText(SignupActivity.this, "Échec de l'inscription dans Firestore: " + e.getMessage(), Toast.LENGTH_LONG).show();
                                     });
                         } else {
-                            Toast.makeText(SignupActivity.this, "Échec de l'inscription: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                            signupButton.setEnabled(true);
+                            try {
+                                throw task.getException();
+                            } catch (FirebaseAuthUserCollisionException e) {
+                                Toast.makeText(SignupActivity.this, "Un compte existe déjà avec cet e-mail.", Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                Toast.makeText(SignupActivity.this, "Échec de l'inscription: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
         });
