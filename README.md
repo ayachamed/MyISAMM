@@ -62,8 +62,8 @@ This project was developed as part of an educational requirement, focusing on co
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
-    cd <repository-directory>
+    git clone https://github.com/ayachamed/MyISAMM
+    cd MyISAMM
     ```
 2.  **Open in Android Studio:**
     *   Launch Android Studio.
