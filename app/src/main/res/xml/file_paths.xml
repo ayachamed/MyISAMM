@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        This configuration allows FileProvider to share files from your app's cache directory.
+        - 'name="shared_cache"': An arbitrary name for this path. You can choose something descriptive.
+        - 'path="."': Specifies the root of the cache directory.
+                       getContext().getCacheDir() corresponds to this.
+    -->
+    <cache-path
+        name="shared_cache"
+        path="." />
+
+    <!--
+        Optionally, if you plan to download files to your app's internal files directory
+        (accessed via getContext().getFilesDir()), you can add a <files-path> element.
+    -->
+    <!--
+    <files-path
+        name="shared_files"
+        path="." />
+    -->
+
+    <!--
+        Optionally, if you were to save files to a specific subdirectory within the cache or files directory,
+        you could specify that subdirectory in the 'path' attribute.
+        For example, if files are in "my_materials/" subdirectory of the cache:
+    -->
+    <!--
+    <cache-path
+        name="material_cache_subdir"
+        path="my_materials/" />
+    -->
+
+    <!--
+        If you ever need to share files from external storage (public directories),
+        you would use <external-path />, <external-files-path />, or <external-cache-path />.
+        However, for opening files downloaded by your app, cache or files directory is usually preferred.
+        Example for public 'Downloads' directory (use with caution and appropriate permissions):
+    -->
+    <!--
+    <external-path
+        name="external_downloads"
+        path="Download/" />
+    -->
+
+</paths>

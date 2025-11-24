@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912856231632",
+    "project_id": "my-isamm",
+    "storage_bucket": "my-isamm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912856231632:android:cf6b0ae5f54590d22778d5",
+        "android_client_info": {
+          "package_name": "com.example.myisamm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwDEtoDEFgNWodGz6I6w511shIWW_a9PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

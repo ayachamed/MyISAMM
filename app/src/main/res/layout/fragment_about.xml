@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        tools:context=".ui.about.AboutFragment">
+
+        <ImageView
+            android:id="@+id/about_logo"
+            android:layout_width="109dp"
+            android:layout_height="107dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/logo_placeholder"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_app_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/about_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_app_version"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Version 1.0.0"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/about_app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/about_text"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/about_app_version"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_developers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/about_devs"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/about_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_tech"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/about_tech_stack"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/about_developers"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:autoLink="email"
+            android:text="myisamm.contact@gmail.com"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/purple_700"
+            app:layout_constraintTop_toBottomOf="@id/about_tech"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/about_link_isamm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/link_isamm_website"
+            android:autoLink="web"
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            app:layout_constraintTop_toBottomOf="@id/about_contact"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

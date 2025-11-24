@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+        Base application theme for Night mode.
+        This theme ALREADY has NoActionBar because its parent is Theme.MaterialComponents.DayNight.NoActionBar.
+    -->
+    <style name="Theme.MyISAMM" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_200</item> <!-- Night mode primary -->
+        <item name="colorPrimaryVariant">@color/purple_700</item> <!-- Consider a darker variant for night if needed -->
+        <item name="colorOnPrimary">@color/black</item> <!-- Text on night mode primary -->
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item> <!-- Consider if this variant is distinct enough -->
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- If you defined Theme.MyISAMM.Login in the day theme, and it needs specific night overrides: -->
+    <style name="Theme.MyISAMM.Login" parent="Theme.MyISAMM">
+        <!-- Theme.MyISAMM (night) is already NoActionBar -->
+        <!-- <item name="android:windowFullscreen">true</item> -->
+        <!-- <item name="android:windowBackground">@color/login_background_night</item> -->
+    </style>
+</resources>

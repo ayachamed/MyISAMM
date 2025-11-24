@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">MyISAMM</string>
+
+    <!-- Titles for Navigation (Ensure these are used by navigation graph labels and BottomNav menu) -->
+    <string name="title_home">Accueil</string> <!-- ALREADY PRESENT, used for Home tab -->
+    <string name="title_my_courses">Mes Cours</string> <!-- ALREADY PRESENT, used for "Mes cours" tab -->
+    <string name="title_profile">Mon Profil</string> <!-- ALREADY PRESENT, used for Profile tab -->
+    <string name="title_about">À Propos</string> <!-- ALREADY PRESENT, used for About tab -->
+    <string name="title_choose_department">Choisir Département</string> <!-- ALREADY PRESENT, used as label for DepartmentSelectionFragment -->
+
+
+    <!-- Strings for CategorySelectionFragment and MaterialListFragment -->
+    <string name="no_items_found">Aucun élément trouvé.</string> <!-- For empty RecyclerView states -->
+    <string name="error_loading_data">Erreur de chargement des données.</string> <!-- For Firebase data loading errors -->
+
+    <!-- Strings for MaterialListFragment (File/Link handling) -->
+    <string name="downloading_file">Téléchargement de %1$s…</string> <!-- %1$s will be replaced by filename -->
+    <string name="download_failed">Échec du téléchargement: %1$s</string> <!-- %1$s will be error message -->
+    <string name="download_manager_not_available">Gestionnaire de téléchargement non disponible.</string>
+    <string name="could_not_open_link">Impossible d\'ouvrir le lien.</string>
+    <string name="link_url_missing">URL du lien manquante.</string>
+    <string name="file_path_missing">Chemin du fichier manquant.</string>
+    <string name="unknown_material_type">Type de matériel inconnu.</string>
+    <string name="unsupported_file_type">Type de fichier non supporté: %1$s</string>
+    <string name="no_app_to_open_file">Aucune application trouvée pour ouvrir ce type de fichier.</string>
+    <string name="could_not_create_temp_file">Impossible de créer un fichier temporaire.</string>
+
+    <string name="login_title">Bienvenue , مرحبا !</string>
+    <string name="login_subtitle">Connectez à votre compte</string>
+    <string name="email_label">E-mail</string>
+    <string name="password_label">Mot de passe</string>
+    <string name="email_hint">Entrez votre e-mail</string>
+    <string name="password_hint">Entrez votre mot de passe</string>
+    <string name="log_in">Se connecter</string>
+    <string name="no_account">Vous n\'avez pas de compte ?</string>
+    <string name="sign_up_link">S\'inscrire</string>
+
+    <string name="signup_title">Veuillez créer votre compte</string>
+    <string name="confirm_password_label">Confirmer votre mot de passe</string>
+    <string name="confirm_password_hint">Confirmez mot de passe</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="compte_exist">Vouz avez deja un compte ?</string>
+
+    <string name="role_student">Étudiant</string>
+    <string name="role_professor">Professeur</string>
+
+    <string name="welcome">Bienvenue !</string>
+    <string name="username_placeholder">Nom d\'utilisateur</string>
+    <string name="clubs">CLUBS</string>
+    <string name="university_image_desc">Image du bâtiment de l\'université ISAMM</string>
+    <string name="user_profile_icon_desc">Icône du profil utilisateur</string>
+    <string name="club_logo_desc">Logo du club</string>
+    <string name="club_image_desc">Les clubs de l\'ISAMM</string>
+
+
+    <string name="choose_department">Choisissez votre département</string>
+
+
+    <string name="previous_categories">Catégories précédentes</string> <!-- Could be useful for breadcrumbs if implemented -->
+    <string name="category_placeholder_desc">Placeholder pour l\'élément de catégorie</string>
+
+    <string name="back_button_desc">Retour</string>
+    <string name="logo_desc">Logo MyISAMM</string>
+    <string name="password_visibility_desc">Basculer la visibilité du mot de passe</string>
+    <string name="department_icon_desc">Icône du département</string> <!-- Added text -->
+
+    <string name="hello_blank_fragment">Hello blank fragment</string> <!-- Standard placeholder, remove if not used -->
+    <string name="desc_profile_picture">Photo de profil</string> <!-- Added text -->
+    <string name="desc_logout_button">Bouton de déconnexion</string> <!-- Corrected description -->
+    <string name="desc_map_view">Vue de la carte</string> <!-- Added text -->
+
+    <string name="action_logout">Se déconnecter</string>
+
+
+
+    <string name="app_version_placeholder">Version %1$s</string> <!-- For dynamic version display -->
+    <string name="desc_app_logo">Logo de l\'application</string>
+    <string name="about_text">MyISAMM est une application destinée aux étudiants de l’ISAMM. Elle offre un accès rapide aux ressources, notifications et outils académiques personnalisés.</string>
+    <string name="about_devs">Développée par: Adam Jebali &amp; Mohamed Ayacha</string>
+    <string name="about_tech_stack">Technologies utilisées : Android Studio, Firebase, Java, Figma</string>
+    <string name="link_isamm_website">https://isa2m.rnu.tn/</string>
+    <string name="contact_email">myisamm.contact@gmail.com</string>
+    <string name="forgot_password" /> <!-- Example contact email -->
+
+</resources>
